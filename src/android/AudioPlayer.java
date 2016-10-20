@@ -20,6 +20,7 @@ package org.apache.cordova.media;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.PlaybackParams;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -425,6 +426,18 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
         }
         this.mode = mode;
     }
+
+    /**
+     * Set the playback rate for audio player
+     *
+     * @param speed
+     */
+    public void setRate(float speed) {
+        PlaybackParams params = new PlaybackParams();
+        params.setSpeed(speed);
+        this.player.setPlaybackParams(params);
+    }
+
 
     /**
      * Get the audio state.
